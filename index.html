@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Resource Allocation System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="job-scheduler">Job Scheduler</button>
+            <button class="tab-button" data-tab="resource-selector">Resource Selector</button>
+            <button class="tab-button" data-tab="efficiency-analyzer">Efficiency Analyzer</button>
+        </div>
+
+        <!-- Job Scheduler Tab -->
+        <div id="job-scheduler" class="tab-content active">
+            <div class="form-container">
+                <div class="form-row">
+                    <label>Job Name</label>
+                    <label>Duration (hrs)</label>
+                    <label>Deadline (hrs)</label>
+                    <label>Profit (₹)</label>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="job-name" placeholder="Enter job name">
+                    <input type="number" id="job-duration" placeholder="Duration">
+                    <input type="number" id="job-deadline" placeholder="Deadline">
+                    <input type="number" id="job-profit" placeholder="Profit">
+                    <button class="btn btn-primary" onclick="addJob()">Add Job</button>
+                </div>
+                <div class="form-row settings">
+                    <label>Available Time (hrs):</label>
+                    <input type="number" id="time-limit" value="8.0" step="0.1">
+                    <label>Sort By:</label>
+                    <select id="job-sort-type">
+                        <option value="Max Profit">Max Profit</option>
+                        <option value="Min Duration">Min Duration</option>
+                        <option value="Best Ratio" selected>Best Ratio</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="scheduleJobs()">Schedule Jobs</button>
+                </div>
+                <div class="form-row">
+                    <input type="file" id="excel-upload-job" accept=".xlsx,.xls" style="display: none;" onchange="handleExcelUploadJob(event)">
+                    <button class="btn btn-primary" onclick="document.getElementById('excel-upload-job').click()">Upload from Excel</button>
+                    <button class="btn btn-secondary" onclick="clearJobOutput()">Clear Output</button>
+                </div>
+            </div>
+            <div class="output-container">
+                <textarea id="job-output" class="output-text" readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Resource Selector Tab -->
+        <div id="resource-selector" class="tab-content">
+            <div class="form-container">
+                <div class="form-row">
+                    <label>Resource Name</label>
+                    <label>Cost (₹)</label>
+                    <label>Benefit (₹)</label>
+                </div>
+                <div class="form-row">
+                    <input type="text" id="resource-name" placeholder="Enter resource name">
+                    <input type="number" id="resource-cost" placeholder="Cost">
+                    <input type="number" id="resource-benefit" placeholder="Benefit">
+                    <button class="btn btn-success" onclick="addResource()">Add Resource</button>
+                </div>
+                <div class="form-row settings">
+                    <label>Budget (₹):</label>
+                    <input type="number" id="budget-input" value="10000">
+                    <label>Sort By:</label>
+                    <select id="resource-sort-type">
+                        <option value="Max Benefit">Max Benefit</option>
+                        <option value="Min Cost">Min Cost</option>
+                        <option value="Best Ratio" selected>Best Ratio</option>
+                    </select>
+                    <button class="btn btn-success" onclick="selectResources()">Select Resources</button>
+                </div>
+                <div class="form-row">
+                    <input type="file" id="excel-upload-resource" accept=".xlsx,.xls" style="display: none;" onchange="handleExcelUploadResource(event)">
+                    <button class="btn btn-success" onclick="document.getElementById('excel-upload-resource').click()">Upload from Excel</button>
+                    <button class="btn btn-secondary" onclick="clearResourceOutput()">Clear Output</button>
+                </div>
+            </div>
+            <div class="output-container">
+                <textarea id="resource-output" class="output-text" readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Efficiency Analyzer Tab -->
+        <div id="efficiency-analyzer" class="tab-content">
+            <div class="form-container">
+                <button class="btn btn-purple" onclick="runAnalysis()">Run Efficiency Analysis</button>
+            </div>
+            <div class="output-container">
+                <textarea id="analyzer-output" class="output-text" readonly></textarea>
+            </div>
+            <div class="chart-container">
+                <canvas id="efficiency-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

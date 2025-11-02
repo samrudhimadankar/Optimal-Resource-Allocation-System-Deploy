@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eaf2f8;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    min-height: 700px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background-color: #eaf2f8;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 20px;
+    background-color: #eaf2f8;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    background-color: #d6e9f5;
+}
+
+.tab-button.active {
+    background-color: #ffffff;
+    border-bottom-color: #007acc;
+    color: #007acc;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 10px;
+    min-height: 600px;
+    background-color: #ffffff;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#job-scheduler {
+    background-color: #f0f4f7;
+}
+
+#resource-selector {
+    background-color: #f7f9fc;
+}
+
+#efficiency-analyzer {
+    background-color: #f9f9f9;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-row.settings {
+    margin-top: 15px;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+#resource-selector .form-row:first-of-type {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#resource-selector .form-row:nth-of-type(2) {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.form-row label {
+    font-size: 10px;
+    font-weight: normal;
+    color: #333;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row select {
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007acc;
+}
+
+.btn-primary:hover {
+    background-color: #005f99;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-purple {
+    background-color: #6f42c1;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Output Container */
+.output-container {
+    margin-top: 15px;
+}
+
+.output-text {
+    width: 100%;
+    height: 500px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    resize: vertical;
+    overflow-y: auto;
+}
+
+#analyzer-output {
+    height: 400px;
+}
+
+/* Chart Container */
+.chart-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#efficiency-chart {
+    width: 600px !important;
+    height: 400px !important;
+    max-width: 100%;
+}
+
+/* Adjust form row for resource selector */
+#resource-selector .form-row.settings {
+    grid-template-columns: auto auto auto auto auto;
+}
+
+/* Adjust form row for efficiency analyzer */
+#efficiency-analyzer .form-container {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+}
+
